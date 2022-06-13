@@ -8,15 +8,15 @@ export class Locations {
 
   @Field()
   @Property()
-  zipcode: String;
+  zipcode: string;
 
   @Field()
   @Property()
-  city: String;
+  city: string;
 
   @Field()
   @Property()
-  county: String;
+  county: string;
 }
 
 export const LocationModel = getModelForClass(Locations);

@@ -3,14 +3,13 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-"""The Categories model"""
-type Locations {
+type Location {
   city: String!
   county: String!
-  id: ID!
+  id: Float!
   zipcode: String!
 }
 
 type Query {
-  getLocationByZip(zip: String!): Locations!
+  getLocationByZipcode(zipcode: String!): Location
 }

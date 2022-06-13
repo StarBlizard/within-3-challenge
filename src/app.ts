@@ -1,19 +1,11 @@
 import 'reflect-metadata';
 import { connect } from 'mongoose';
-import { GraphQLSchema } from 'graphql';
-import { ApolloServer } from 'apollo-server';
-import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 
+import { init } from './graphql';
 import { env } from './utils/env';
-import query from './graphql/query';
 
-const main = async () => {
-  const schema = new GraphQLSchema({ query });
-
-  const server = new ApolloServer({
-    schema,
-    plugins: [ ApolloServerPluginLandingPageGraphQLPlayground ],
-  });
+const app = async () => {
+  const server = await init();
 
   const mongoose = await connect(env.db);
   await mongoose.connection;
@@ -25,6 +17,6 @@ const main = async () => {
   );
 };
 
-main().catch((error) => {
+app().catch((error) => {
   console.log(error, 'error');
 });
